@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <style>
+        html,
+        body {
+            font-family: 'Open Sans', sans-serif;
+            
+
+        }
+       
+    </style>
+    <title>IoT eko</title>
+</head>
+
+<body>
+
+    <div class="container-fluid" id="heder" style="background-color: azure; height: 15rem;">
+        <div class="container w-100  p-5">
+            <h1 class="display-4 text-center" style="color: white; font-weight: bold;">Procena zagađenosti vazduha
+                na osnovu saobraćaja</h1>
+        </div>
+
+    </div>
+    <div class="conatiner-fluid p-5" id="signal">
+        <h1 id="signalR" class="text-center"></h1>
+        <h3 id="signalP" class="text-center"></h3>
+    </div>
+
+    <div class="container">
+        <center>
+            <img id="myImg" src="" class="p-4" style="height: 550px;">
+        </center>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="container-fluid w-100" style="background-color: #23272a; height: 300px;">
+
+    </div>
+
+    <script>
+
+        function funkcijaMaskota(x) {
+            document.getElementById("myImg").src = x;
+
+        }
+        function changeBackground(color_pozadina, color_text) {
+            document.body.style.background = color_pozadina;
+            document.getElementById('heder').style.background = color_text;
+        }
+        function changeColor(color_text, x) {
+            document.getElementById('signal').style.background = color_text;
+            document.getElementById('signalR').textContent = x;
+            document.getElementById('signalR').style.color = '#fff';
+        }
+
+        function print(x) {
+            document.getElementById('signalP').textContent = x;
+            document.getElementById('signalP').style.color = '#fff';
+        }
+
+        var promenljiva = `{{variable}}`;
+        var x = parseInt(promenljiva);
+        
+        if (x < 150) {
+            window.addEventListener("load", function () { changeBackground('#fff', '#70e000') });
+            window.addEventListener("load", function () { changeColor('#70e000', 'Odličan kvalitet vazduha') });
+            window.addEventListener("load", function () { print('Koncentracija CO2 u vazduha je ' + x*150+'g') });
+            window.addEventListener("load", function () { funkcijaMaskota("http://www.beoeko.com/ikonice/beoeko/1-maskota.png") });
+        }
+        else if (x > 150 && x < 200) {
+            window.addEventListener("load", function () { changeBackground('#fff', '#fff212') });
+            window.addEventListener("load", function () { changeColor('#fff212', 'Dobar kvalitet vazduha') });
+            window.addEventListener("load", function () { print('Koncentracija CO2 u vazduha je ' + x*150+'g') });
+            window.addEventListener("load", function () { funkcijaMaskota("http://www.beoeko.com/ikonice/beoeko/2-maskota.png") });
+        }
+        else if (x > 200 && x < 300) {
+            window.addEventListener("load", function () { changeBackground('#fff', '#f79633') });
+            window.addEventListener("load", function () { changeColor('#f79633', 'Prihvatljiv kvalitet vazduha') });
+            window.addEventListener("load", function () { print('Koncentracija CO2 u vazduha je ' + x*150+'g') });
+            window.addEventListener("load", function () { funkcijaMaskota("http://www.beoeko.com/ikonice/beoeko/3-maskota.png") });
+        }
+        else {
+            window.addEventListener("load", function () { changeBackground('#fff', '#d90429') });
+            window.addEventListener("load", function () { changeColor('#d90429', 'Loš kvalitet vazduha') });
+            window.addEventListener("load", function () { print('Koncentracija CO2 u vazduha je ' + x*150+'g') });
+            window.addEventListener("load", function () { funkcijaMaskota("http://www.beoeko.com/ikonice/beoeko/4-maskota.png") });
+        }
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+        crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>
